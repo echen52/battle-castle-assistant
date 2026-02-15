@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battle Castle Pokemon Finder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Battle Castle Pokemon Finder</h1>
+        
+        <div class="iv-selector">
+            <label>IV:</label>
+            <button id="iv31Btn" class="iv-btn active">31</button>
+            <button id="iv21Btn" class="iv-btn">21</button>
+        </div>
+        
+        <div class="input-section">
+            <div class="search-set">
+                <h3>Search 1</h3>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="item1">Item:</label>
+                        <input type="text" id="item1" placeholder="e.g., Brightpowder" autocomplete="off">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="nature1">Nature:</label>
+                        <input type="text" id="nature1" placeholder="e.g., Jolly" autocomplete="off">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ability1">Ability:</label>
+                        <input type="text" id="ability1" placeholder="e.g., Pressure" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-set">
+                <h3>Search 2</h3>
+                <div class="input-row search2-inputs">
+                    <div class="input-group">
+                        <label for="item2">Item:</label>
+                        <input type="text" id="item2" placeholder="e.g., Wise Glasses" autocomplete="off">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="nature2">Nature:</label>
+                        <input type="text" id="nature2" placeholder="e.g., Modest" autocomplete="off">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ability2">Ability:</label>
+                        <input type="text" id="ability2" placeholder="e.g., Synchronize" autocomplete="off">
+                    </div>
+                </div>
+                <div class="input-row search2-pokemon" style="display: none;">
+                    <div class="input-group">
+                        <label for="pokemon2">Pokemon:</label>
+                        <input type="text" id="pokemon2" placeholder="e.g., Alakazam" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-set">
+                <h3>Search 3</h3>
+                <div class="input-row search3-inputs">
+                    <div class="input-group">
+                        <label for="item3">Item:</label>
+                        <input type="text" id="item3" placeholder="e.g., Choice Band" autocomplete="off">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="nature3">Nature:</label>
+                        <input type="text" id="nature3" placeholder="e.g., Adamant" autocomplete="off">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="ability3">Ability:</label>
+                        <input type="text" id="ability3" placeholder="e.g., Intimidate" autocomplete="off">
+                    </div>
+                </div>
+                <div class="input-row search3-pokemon" style="display: none;">
+                    <div class="input-group">
+                        <label for="pokemon3">Pokemon:</label>
+                        <input type="text" id="pokemon3" placeholder="e.g., Garchomp" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="button-row">
+                <button id="searchBtn">Search All</button>
+                <button id="clearBtn">Clear</button>
+            </div>
+        </div>
+
+        <div id="results" class="results-section"></div>
+    </div>
+
+    <script src="pokemon_data.js"></script>
+    <script src="pokemon-sprites.js"></script>
+    <script src="logic.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
