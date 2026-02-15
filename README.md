@@ -48,7 +48,7 @@ All three search slots work the same way in this mode.
 
 ## Data Source
 
-This tool uses Pokemon data from Pokemon Platinum's Battle Castle facility, including:
+This tool uses Pokemon data from Pokemon Platinum/HeartGold/SoulSilver's Battle Castle facility, including:
 - 940+ unique Pokemon sets
 - Complete movesets for each variant
 - Accurate speed calculations for both 31 IV and 21 IV scenarios
