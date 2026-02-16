@@ -151,16 +151,11 @@ Found a bug or have a suggestion? Feel free to DM me @ em_baby (Discord) or pota
 A: HGSS and Platinum use different display orders for Pokemon info. The tool matches what you see in-game.
 
 **Q: What's the difference between IV 31 and IV 21?**  
-A: IV 31 is standard competitive/max IVs. IV 21 is used in certain Battle Facility scenarios with modified stats.
-
-**Q: Why Instance 4 for Search 2/3 in IV 21 mode?**  
-A: This reflects specific Battle Castle mechanics in the games.
-
+A: IV 31 is max IVs and standard for higher rounds. Any battle past Battle 49 is associated with Round 8. However, the Battle Castle also occasionally selects a trainer from the previous round. In this case, Round 7 Trainers are associated with IV 21, and therefore sometimes will appear.
 
 ## Acknowledgments
 
 - Pokemon sprite images from [PokeAPI](https://pokeapi.co/)
-- Pokemon Platinum & HGSS Battle Castle data
 - Built for the Pokemon competitive community
 - Special thanks to the Battle Facility research community
 
