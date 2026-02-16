@@ -1,6 +1,7 @@
 // Pokemon data will be loaded from pokemon_data.js
 let engine;
 let selectedIV = 31; // Default to IV 31
+let selectedGame = 'hgss'; // Default to HGSS
 
 // Initialize engine once DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,10 +9,70 @@ document.addEventListener('DOMContentLoaded', () => {
         engine = new BattleCastleEngine(POKEMON_DATA);
         console.log('Pokemon data loaded:', POKEMON_DATA.length, 'sets');
         setupAutocomplete();
+        reorderInputFields(); // Set initial order (HGSS)
     } else {
         alert('Failed to load Pokemon data. Please ensure pokemon_data.js is included.');
     }
 });
+
+// Event listeners for game version buttons
+document.getElementById('hgssBtn').addEventListener('click', () => {
+    selectedGame = 'hgss';
+    document.getElementById('hgssBtn').classList.add('active');
+    document.getElementById('ptBtn').classList.remove('active');
+    reorderInputFields();
+    // Re-run search if there are results displayed
+    const resultsDiv = document.getElementById('results');
+    if (resultsDiv.innerHTML && !resultsDiv.innerHTML.includes('no-results')) {
+        performSearch();
+    }
+});
+
+document.getElementById('ptBtn').addEventListener('click', () => {
+    selectedGame = 'pt';
+    document.getElementById('ptBtn').classList.add('active');
+    document.getElementById('hgssBtn').classList.remove('active');
+    reorderInputFields();
+    // Re-run search if there are results displayed
+    const resultsDiv = document.getElementById('results');
+    if (resultsDiv.innerHTML && !resultsDiv.innerHTML.includes('no-results')) {
+        performSearch();
+    }
+});
+
+// Reorder input fields based on game version
+function reorderInputFields() {
+    const searches = [1, 2, 3];
+    
+    searches.forEach(num => {
+        const container = document.querySelector(`.search${num > 1 ? num : ''}-inputs, .input-row:has(#ability${num})`);
+        if (!container) return;
+        
+        const abilityGroup = container.querySelector('[data-field="ability"]');
+        const natureGroup = container.querySelector('[data-field="nature"]');
+        const itemGroup = container.querySelector('[data-field="item"]');
+        
+        if (!abilityGroup || !natureGroup || !itemGroup) return;
+        
+        // Remove all
+        abilityGroup.remove();
+        natureGroup.remove();
+        itemGroup.remove();
+        
+        // Re-append in correct order
+        if (selectedGame === 'hgss') {
+            // HGSS: Ability - Nature - Item
+            container.appendChild(abilityGroup);
+            container.appendChild(natureGroup);
+            container.appendChild(itemGroup);
+        } else {
+            // Pt: Item - Nature - Ability
+            container.appendChild(itemGroup);
+            container.appendChild(natureGroup);
+            container.appendChild(abilityGroup);
+        }
+    });
+}
 
 // Setup custom autocomplete
 let autocompleteData = {
