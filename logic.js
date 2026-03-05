@@ -6,6 +6,7 @@ const ALARMS = {
 };
 
 const ALL_ALARMS = [...ALARMS.OHKO, ...ALARMS.SETUP, ...ALARMS.COUNTER];
+window.ALL_ALARMS = ALL_ALARMS;
 
 /**
  * Main Logic Class
@@ -87,6 +88,58 @@ class BattleCastleEngine {
         // Convert to array and sort by count (descending)
         return Object.entries(speciesMap)
             .sort((a, b) => b[1] - a[1]);
+    }
+
+    /**
+     * Collapses trainers with identical rosters into groups.
+     * @param {Array} trainers - Array of trainer objects
+     * @returns {Array} - Array of group objects: { names, trainerClass, pokemon }
+     */
+    collapseTrainerGroups(trainers) {
+        const groups = {};
+        trainers.forEach(t => {
+            const key = t.pokemon.slice().sort().join('|');
+            if (!groups[key]) {
+                groups[key] = { names: [], trainerClass: t.trainerClass, pokemon: t.pokemon };
+            }
+            groups[key].names.push(t.name);
+        });
+        return Object.values(groups);
+    }
+
+    /**
+     * Finds trainer groups whose rosters contain both specified Pokemon.
+     * @param {string} p1 - e.g. "LATIOS 3"
+     * @param {string} p2 - e.g. "SALAMENCE 3"
+     * @param {Array} trainerData - TRAINERS_HGSS or TRAINERS_PT array
+     * @returns {Array} - Array of collapsed trainer groups
+     */
+    findTrainers(p1, p2, trainerData) {
+        const matches = trainerData.filter(t =>
+            t.pokemon.includes(p1) && t.pokemon.includes(p2)
+        );
+        return this.collapseTrainerGroups(matches);
+    }
+
+    /**
+     * Gets candidate Pokemon for slot 3 from a trainer group,
+     * excluding already-seen Pokemon and Pokemon holding already-seen items.
+     * Uses POKEMON_DATA (castle dataset) for full card info via a pre-built lookup map.
+     * @param {Array} rosterNames - trainer's pokemon array (e.g. ["LATIOS 3", ...])
+     * @param {string[]} seen - already confirmed Pokemon names (e.g. ["LATIOS 3", "SALAMENCE 3"])
+     * @param {string[]} seenItems - items held by confirmed Pokemon (from POKEMON_DATA)
+     * @param {Object} pokemonByName - map of name -> Pokemon object built from POKEMON_DATA
+     * @returns {Array} - Array of matching Pokemon objects from POKEMON_DATA
+     */
+    getCandidates(rosterNames, seen, seenItems, pokemonByName) {
+        return rosterNames
+            .filter(name => !seen.includes(name))
+            .filter(name => {
+                const p = pokemonByName[name];
+                return p && !seenItems.includes(p.item);
+            })
+            .map(name => pokemonByName[name])
+            .filter(Boolean);
     }
 }
 

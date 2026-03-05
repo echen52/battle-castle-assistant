@@ -448,3 +448,211 @@ button:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+/* =====================
+   Trainer Lookup
+   ===================== */
+
+#find-trainers-btn {
+    border-color: #ffd700;
+    color: #ffd700;
+}
+
+#find-trainers-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+#trainer-lookup-section {
+    margin-bottom: 30px;
+}
+
+.trainer-lookup {
+    background-color: #2a2a2a;
+    border: 2px solid #3d3d3d;
+    padding: 25px;
+}
+
+.trainer-lookup h2 {
+    margin: 0 0 8px 0;
+    color: #eee;
+    font-size: 1.1rem;
+}
+
+.lookup-subtitle {
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.lookup-subtitle strong {
+    color: #ffd700;
+}
+
+/* Trainer Group */
+.trainer-group {
+    border: 1px solid #3d3d3d;
+    margin-bottom: 10px;
+}
+
+.trainer-group:last-child {
+    margin-bottom: 0;
+}
+
+.trainer-group-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #3d3d3d;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+}
+
+.trainer-group-header:hover {
+    background: #484848;
+}
+
+.trainer-group-header.auto-expanded {
+    cursor: default;
+    background: #3d3d3d;
+    border-bottom: 1px solid #555;
+}
+
+.trainer-group-header.auto-expanded:hover {
+    background: #3d3d3d;
+}
+
+.toggle-arrow {
+    color: #ffd700;
+    font-size: 11px;
+    width: 12px;
+    flex-shrink: 0;
+}
+
+.trainer-names {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 13px;
+    flex: 1;
+}
+
+.trainer-class {
+    color: #888;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.candidate-count {
+    color: #555;
+    font-size: 11px;
+    flex-shrink: 0;
+}
+
+/* Trainer Candidates Panel */
+.trainer-candidates {
+    padding: 20px;
+    background: #252525;
+}
+
+.trainer-candidates h3 {
+    color: #00d9ff;
+    font-size: 0.95em;
+    margin-bottom: 15px;
+}
+
+/* Select Button (on Search 1 & 2 cards) */
+.select-btn {
+    padding: 3px 10px;
+    font-size: 11px;
+    border: 1px solid #555;
+    color: #888;
+    background: transparent;
+    cursor: pointer;
+    margin-left: auto;
+    transition: all 0.15s;
+}
+
+.select-btn:hover {
+    border-color: #00d9ff;
+    color: #00d9ff;
+    background: transparent;
+}
+
+.select-btn.selected {
+    border-color: #00d9ff;
+    color: #00d9ff;
+    background: rgba(0, 217, 255, 0.08);
+}
+
+/* Alarm Badge */
+.alarm-badge {
+    font-size: 11px;
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    padding: 3px 8px;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+/* Candidate Filter */
+.candidate-filter-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.candidate-filter {
+    flex: 1;
+    padding: 7px 10px;
+    background: #3d3d3d;
+    border: 1px solid #555;
+    color: #eee;
+    font-family: monospace;
+    font-size: 13px;
+    outline: none;
+}
+
+.candidate-filter:focus {
+    border-color: #00d9ff;
+}
+
+.candidate-filter::placeholder {
+    color: #555;
+}
+
+.candidate-filter-count {
+    color: #555;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+/* HP filter input */
+.candidate-filter-hp {
+    width: 80px;
+    padding: 7px 10px;
+    background: #3d3d3d;
+    border: 1px solid #555;
+    color: #eee;
+    font-family: monospace;
+    font-size: 13px;
+    outline: none;
+}
+
+.candidate-filter-hp:focus {
+    border-color: #00d9ff;
+}
+
+.candidate-filter-hp::placeholder {
+    color: #555;
+}
+
+/* Remove number input arrows */
+.candidate-filter-hp::-webkit-outer-spin-button,
+.candidate-filter-hp::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
