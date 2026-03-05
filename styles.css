@@ -545,7 +545,7 @@ button:hover {
 }
 
 .candidate-count {
-    color: #555;
+    color: #ffd700;
     font-size: 11px;
     flex-shrink: 0;
 }
@@ -655,4 +655,27 @@ button:hover {
 .candidate-filter-hp::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+/* Trainer lookup header row */
+.trainer-lookup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.trainer-lookup-header h2 {
+    margin: 0;
+}
+
+#undo-trainer-btn {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+    font-size: 12px;
+    padding: 5px 12px;
+}
+
+#undo-trainer-btn:hover {
+    background: rgba(255, 107, 107, 0.1);
 }

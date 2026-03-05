@@ -241,8 +241,8 @@ function clearSearch() {
     trainerLookupActive = false;
     const trainerSection = document.getElementById('trainer-lookup-section');
     if (trainerSection) trainerSection.style.display = 'none';
-    document.querySelector('.search3-inputs').style.display = 'flex';
-    document.querySelector('.search3-pokemon').style.display = 'none';
+    document.querySelector('.search3-inputs').style.display = selectedIV === 21 ? 'none' : 'flex';
+    document.querySelector('.search3-pokemon').style.display = selectedIV === 21 ? 'flex' : 'none';
     updateFindTrainersButton();
 }
 
@@ -315,7 +315,10 @@ function performTrainerLookup() {
     var seenItems = [p1, p2].map(function(n) { return pokemonByName[n] ? pokemonByName[n].item : null; }).filter(Boolean);
 
     var html = '<div class="trainer-lookup">';
+    html += '<div class="trainer-lookup-header">';
     html += '<h2>Trainer Lookup</h2>';
+    html += '<button id="undo-trainer-btn">Undo Trainer Search</button>';
+    html += '</div>';
 
     if (groups.length === 0) {
         html += '<p class="no-results">No trainers found with both ' + formatPokemonName(p1) + ' and ' + formatPokemonName(p2) + '.</p>';
@@ -346,6 +349,20 @@ function performTrainerLookup() {
             selectPokemon(parseInt(btn.dataset.search), btn.dataset.pokemon);
         });
     });
+
+    document.getElementById('undo-trainer-btn').addEventListener('click', undoTrainerSearch);
+}
+
+function undoTrainerSearch() {
+    trainerLookupActive = false;
+    var section = document.getElementById('trainer-lookup-section');
+    section.style.display = 'none';
+    section.innerHTML = '';
+    var s3result = document.getElementById('search3-result-section');
+    if (s3result) s3result.remove();
+    selectedPokemon[3] = null;
+    document.querySelector('.search3-inputs').style.display = selectedIV === 21 ? 'none' : 'flex';
+    document.querySelector('.search3-pokemon').style.display = selectedIV === 21 ? 'flex' : 'none';
 }
 
 function renderTrainerGroup(group, p1, p2, seenItems, pokemonByName, autoExpand, index) {
