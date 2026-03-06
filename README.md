@@ -1,6 +1,6 @@
 # Battle Castle Assistant
 
-A web-based tool for identifying possible Pokemon Platinum and HeartGold/SoulSilver's Battle Castle facility based on observed characteristics.
+A web-based tool for identifying possible Pokemon in Pokemon Platinum and HeartGold/SoulSilver's Battle Castle facility based on observed characteristics.
 
 ## Features
 
